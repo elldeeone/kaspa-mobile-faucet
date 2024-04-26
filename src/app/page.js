@@ -13,6 +13,7 @@ export default function Home() {
   const [uuid, setUuid] = useState(MY_NAMESPACE);
   const [pw, setPw] = useState(MY_NAMESPACE);
   const [addr, setAddr] = useState(null);
+  const [msg, setMsg] = useState(null);
 
   const createUuid = (e) => {
     setUuid(uuidv5(e.target.phrase.value, MY_NAMESPACE));
@@ -21,10 +22,13 @@ export default function Home() {
   };
 
   useEffect(() => {
+
+    setMsg("hier!")
   
     function onScanSuccess(decodedText, decodedResult) {
       // handle the scanned code as you like, for example:
       console.log(`Code matched = ${decodedText}`, decodedResult);
+      setMsg("hier")
     }
     
     function onScanFailure(error) {
@@ -126,6 +130,7 @@ export default function Home() {
         </form>
       )}
       {addr && <div className="absolute bottom-4 left-4 text-sm text-white/50">Faucet address: <a href={`https://explorer.kaspa.org/addresses/${addr}`} target="_blank">{addr}</a></div>}
+      {msg && <div className="absolute top-4 left-4 text-sm text-red-500">{msg}</div>}
     </main>
   );
 }
