@@ -258,10 +258,10 @@ export default function MainPage(props) {
                 className={`flex flex-col gap-y-4 p-16 items-start h-full transition-opacity duration-700 ease-in animate-fade`}
               >
                 <div className="text-5xl ms-10 font-bold">
-                "BITCOIN WAS THE
+                &ldquo;BITCOIN WAS THE
                 </div>
                 <div className="text-5xl ms-16 font-bold">
-                  KASPA TESTNET"
+                  KASPA TESTNET&rdquo;
                 </div>
               </div>
             )}
@@ -287,9 +287,9 @@ export default function MainPage(props) {
           </div>
           <div className="w-2/5 flex flex-col items-center">
             <div className="text-xl">Just scan your wallet address</div>
-            {/* <button className="m-3 p-3 border-2 bg-slate-600" onClick={startTx}>
+            <button className="m-3 p-3 border-2 bg-slate-600" onClick={startTx}>
               Send TX
-            </button> */}
+            </button>
             <div className="h-64 border-red-100 p-8 m-8">
               QR-Code scanner here
               <div id="reader" width="400px"></div>
