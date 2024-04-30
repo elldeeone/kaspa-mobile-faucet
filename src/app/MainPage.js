@@ -82,7 +82,7 @@ export default function MainPage(props) {
     console.log("sending to ", addr);
     setSendingToAddr(!sendingToAddr);
     if (!sendingToAddr) {
-      axios.get("http://de4.kaspa.org:8000/info/blockdag").then((resp) => {
+      axios.get("https://api.kaspa.org/info/blockdag").then((resp) => {
         setScanStart(resp.data.tipHashes[0]);
       });
       setTimeout(() => {
@@ -99,7 +99,8 @@ export default function MainPage(props) {
       // handle the scanned code as you like, for example:
       console.log(`Code matched = ${decodedText}`, decodedResult);
       setMsg(decodedText);
-      setSendingToAddr(decodedText);
+      // setSendingToAddr(decodedText);
+      startTx(decodedText)
     }
 
     function onScanFailure(error) {
@@ -125,7 +126,7 @@ export default function MainPage(props) {
       if (!!scanStartRef.current && !endDateRef.current) {
         axios
           .get(
-            `http://de4.kaspa.org:8000/blocks?lowHash=${scanStartRef.current}&includeBlocks=true`
+            `https://api.kaspa.org/blocks?lowHash=${scanStartRef.current}&includeBlocks=true`
           )
           .then((resp) => {
             setScanStart(resp.data.blockHashes.pop())
@@ -291,7 +292,7 @@ export default function MainPage(props) {
               Send TX
             </button>
             <div className="h-64 border-red-100 p-8 m-8">
-              QR-Code scanner here
+              
               <div id="reader" width="400px"></div>
             </div>
 
