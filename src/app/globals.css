@@ -22,6 +22,11 @@ body {
   background-size: cover;
 }
 
+.hidetest {
+  display: none;
+  transition: opacity 0.5s, display 0.5s;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
