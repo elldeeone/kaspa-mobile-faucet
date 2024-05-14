@@ -14,8 +14,10 @@ export default function Home(props) {
   const [pw, setPw] = useState(props.pw);
 
   const createUuid = (e) => {
-    setUuid(uuidv5(e.target.phrase.value, MY_NAMESPACE));
-    setPw(e.target.phrase.value, MY_NAMESPACE);
+    if (e.target.phrase.value.length >= 8) {
+      setUuid(uuidv5(e.target.phrase.value, MY_NAMESPACE));
+      setPw(e.target.phrase.value, MY_NAMESPACE);
+    }
     e.preventDefault();
   };
 
@@ -24,24 +26,30 @@ export default function Home(props) {
       className="flex min-h-screen flex-row items-center justify-center text-white"
       style={{ fontFamily: "Rubik" }}
     >
-      {!uuid ?
-      <form onSubmit={createUuid}>
-        <div className="flex flex-col">
-          <div className="text-white text-3xl">
-            Please enter your wallet phrase:
+      {!uuid ? (
+        <form onSubmit={createUuid}>
+          <div className="flex flex-col">
+            <div className="text-white text-3xl">
+              Please enter your wallet phrase:
+            </div>
+            <input
+              type="text"
+              name="phrase"
+              id="phrase"
+              placeholder="Wallet phrase"
+              className="p-1.5 mt-3 text-black"
+            />
+            <button
+              type="submit"
+              className="p-2 my-3 bg-emerald-300/80 border-2"
+            >
+              GO
+            </button>
           </div>
-          <input
-            type="text"
-            name="phrase"
-            id="phrase"
-            placeholder="Wallet phrase"
-            className="p-1.5 mt-3 text-black"
-          />
-          <button type="submit" className="p-2 my-3 bg-emerald-300/80 border-2">
-            GO
-          </button>
-        </div>
-      </form> : <MainPage uuid={uuid} pw={pw} />}
+        </form>
+      ) : (
+        <MainPage uuid={uuid} pw={pw} />
+      )}
     </main>
   );
 }
