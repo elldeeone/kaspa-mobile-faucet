@@ -31,4 +31,8 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .arrow {
+    @apply mt-4; /* Add margin-top to create space between the QR box and the arrow */
+  }
 }

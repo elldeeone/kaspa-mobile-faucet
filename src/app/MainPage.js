@@ -304,26 +304,7 @@ export default function MainPage(props) {
               )}
             </div>
             <div className="w-2/5 flex flex-col items-center">
-              <Image
-                src="upr.svg"
-                width="70"
-                height="70"
-                style={{ color: "white" }}
-                onClick={() => {
-                  try {
-                    document.getElementById("reader__dashboard_section").remove();
-                  } 
-                  catch {
-
-                  }
-                  try {
-                    document.getElementById("reader__header_message").remove();
-                  } catch {
-
-                  }
-                }}
-              />
-              <div className="text-xl">Just scan your wallet address here</div>
+              <div className="text-xl">Scan your Kaspa wallet QR code here!</div>
 
               {/* <button
                 classbuttonName="m-3 p-3 border-2 bg-slate-600"
